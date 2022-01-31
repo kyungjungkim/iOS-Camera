@@ -16,12 +16,13 @@
 
 #pragma mark - Capture Session Configuration
 
-// Instance methods
+
+// Instance Methods
 
 - (id)init {
     if ((self = [super init])) {
-        [self setCaptureSession:[[AVCaptureSession alloc] init]];
-        //captureSession.sessionPreset = AVCaptureSessionPresetHigh;
+        [self setCaptureSession:[AVCaptureSession new]];
+        // captureSession.sessionPreset = AVCaptureSessionPresetHigh;
         
         
         NSLog(@"captureSessionPreset: %@", captureSession.sessionPreset);
@@ -33,19 +34,19 @@
             imageFrameWidth = 3840;
             imageFrameHeight = 2160;
         } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset1920x1080]) {
-            //NSLog(@"AVCaptureSessionPreset1920x1080");
+            // NSLog(@"AVCaptureSessionPreset1920x1080");
             
             [captureSession setSessionPreset:AVCaptureSessionPreset1920x1080];
             imageFrameWidth = 1920;
             imageFrameHeight = 1080;
         } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
-            //NSLog(@"AVCaptureSessionPreset640x480");
+            // NSLog(@"AVCaptureSessionPreset640x480");
             
             [captureSession setSessionPreset:AVCaptureSessionPreset640x480];
             imageFrameWidth = 640;
             imageFrameHeight = 480;
         } else  if ([captureSession canSetSessionPreset:AVCaptureSessionPreset352x288]) {
-            //NSLog(@"AVCaptureSessionPreset352x288");
+            // NSLog(@"AVCaptureSessionPreset352x288");
             
             [captureSession setSessionPreset:AVCaptureSessionPreset352x288];
             imageFrameHeight = 352;
