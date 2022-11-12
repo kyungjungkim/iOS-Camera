@@ -2,7 +2,7 @@
 //  ViewController.m
 //  Camera
 //
-//  Created by Kyungjung Kim on 2022/01/31.
+//  Created by Kyungjung Kim on 2022/11/12.
 //
 
 #import "ViewController.h"
@@ -17,14 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
     
     [self setupCaptureSessionManager];
 }
 
 
 #pragma mark - Instance Methods
-
 
 - (void)setupCaptureSessionManager {
     // remove existing input

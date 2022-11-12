@@ -2,7 +2,7 @@
 //  SceneDelegate.m
 //  Camera
 //
-//  Created by Kyungjung Kim on 2022/01/31.
+//  Created by Kyungjung Kim on 2022/11/12.
 //
 
 #import "SceneDelegate.h"
@@ -13,11 +13,23 @@
 
 @implementation SceneDelegate
 
+@synthesize window;
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    ViewController *homeVC = [ViewController new];
+    
+    UINavigationController *naviVC = [UINavigationController new];
+    naviVC = [naviVC initWithRootViewController:homeVC];
+
+    
+    window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
+    
+    [window setRootViewController:naviVC];
+    [window makeKeyAndVisible];
 }
 
 

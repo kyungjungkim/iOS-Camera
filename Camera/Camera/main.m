@@ -2,7 +2,7 @@
 //  main.m
 //  Camera
 //
-//  Created by Kyungjung Kim on 2022/01/31.
+//  Created by Kyungjung Kim on 2022/11/12.
 //
 
 #import <UIKit/UIKit.h>
