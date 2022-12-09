@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) CaptureSessionManager *captureSessionManager;
 
+@property (weak, nonatomic) IBOutlet UIView *cameraView;
+
 
 - (void)setupCaptureSessionManager;
 

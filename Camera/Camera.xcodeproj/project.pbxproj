@@ -68,15 +68,15 @@
 				A1C3F07C291F4BA700ED20E6 /* AppDelegate.m */,
 				A1C3F07E291F4BA700ED20E6 /* SceneDelegate.h */,
 				A1C3F07F291F4BA700ED20E6 /* SceneDelegate.m */,
-				A1C3F087291F4BA900ED20E6 /* Assets.xcassets */,
-				A1C3F089291F4BA900ED20E6 /* LaunchScreen.storyboard */,
-				A1C3F08C291F4BA900ED20E6 /* Info.plist */,
-				A1C3F08D291F4BA900ED20E6 /* main.m */,
 				A1C3F094291F4E0200ED20E6 /* ViewController.h */,
 				A1C3F095291F4E0200ED20E6 /* ViewController.m */,
 				A1C3F096291F4E0200ED20E6 /* ViewController.xib */,
 				A1262AE7291F880B00D36B8A /* CaptureSessionManager.h */,
 				A1262AE8291F880B00D36B8A /* CaptureSessionManager.m */,
+				A1C3F087291F4BA900ED20E6 /* Assets.xcassets */,
+				A1C3F089291F4BA900ED20E6 /* LaunchScreen.storyboard */,
+				A1C3F08C291F4BA900ED20E6 /* Info.plist */,
+				A1C3F08D291F4BA900ED20E6 /* main.m */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -290,6 +290,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4EU8LB7WJZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Camera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -301,7 +302,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.SoftSolution.Camera;
+				PRODUCT_BUNDLE_IDENTIFIER = "kr.co.kkj.B-Camera";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,6 +316,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4EU8LB7WJZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Camera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -326,7 +328,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.SoftSolution.Camera;
+				PRODUCT_BUNDLE_IDENTIFIER = "kr.co.kkj.B-Camera";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

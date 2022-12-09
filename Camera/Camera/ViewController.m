@@ -13,7 +13,7 @@
 
 @implementation ViewController
 
-@synthesize captureSessionManager;
+@synthesize captureSessionManager, cameraView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,10 +23,9 @@
 }
 
 
-#pragma mark - Instance Methods
+#pragma mark: Instance Methods
 
 - (void)setupCaptureSessionManager {
-    // remove existing input
     AVCaptureInput *currentCameraInput = [captureSessionManager.captureSession.inputs objectAtIndex:0];
     [captureSessionManager.captureSession removeInput:currentCameraInput];
     currentCameraInput = NULL;
@@ -48,10 +47,8 @@
         
         [captureSessionManager.captureSession commitConfiguration];
         
-        // Add to self.view's layer
-        // [self.view.layer addSublayer:[captureSessionManager.rootView layer]];
-        [captureSessionManager.previewLayer setFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
-        [self.view.layer addSublayer:captureSessionManager.previewLayer];
+        [captureSessionManager.previewLayer setFrame:CGRectMake(0.0f, 0.0f, cameraView.layer.frame.size.width, cameraView.layer.frame.size.height)];
+        [cameraView.layer addSublayer:captureSessionManager.previewLayer];
         
         dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(globalQueue, ^{

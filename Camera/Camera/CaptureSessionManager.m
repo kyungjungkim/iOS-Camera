@@ -101,7 +101,7 @@
 - (void)addVideoPreviewLayer {
     previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
     [previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
-    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
+    [previewLayer setVideoGravity:AVLayerVideoGravityResize];
     
     
     // Apply animation effect to the camera's preview layer
