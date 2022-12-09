@@ -53,8 +53,10 @@
         [captureSessionManager.previewLayer setFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
         [self.view.layer addSublayer:captureSessionManager.previewLayer];
         
-        
-        [captureSessionManager.captureSession startRunning];
+        dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(globalQueue, ^{
+            [self->captureSessionManager.captureSession startRunning];
+        });
     }
 }
 
