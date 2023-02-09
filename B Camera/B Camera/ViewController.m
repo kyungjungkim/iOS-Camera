@@ -125,9 +125,7 @@ portraitEffectsMatteDeliveryMode, selectedSemanticSegmentationMatteTypes, device
                 self->checkResult = AVCamSetupResultSuccess;
                 
                 [self requestPhoto];
-                while ([self configureSession]) {
-                    ;
-                }
+                [self configureSession];
                 
                 break;
             }
