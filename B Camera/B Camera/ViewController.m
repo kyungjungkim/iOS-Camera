@@ -352,53 +352,68 @@ portraitEffectsMatteDeliveryMode, selectedSemanticSegmentationMatteTypes, device
 }
 
 - (void)selectSessionPreset {
-//         Indicate that some changes will be made to the session
-//    [captureSession beginConfiguration];
-    
-    if ([captureSession canSetSessionPreset:AVCaptureSessionPreset3840x2160]) {
+    if ([captureSession canSetSessionPreset:AVCaptureSessionPresetPhoto]) {
+        [captureSession setSessionPreset:AVCaptureSessionPresetPhoto];
+        
+//        A preset suitable for capturing high-resolution photo quality output.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
+    } else if ([captureSession canSetSessionPreset:AVCaptureSessionPresetiFrame1280x720]) {
+        [captureSession setSessionPreset:AVCaptureSessionPresetiFrame1280x720];
+        
+//        A preset suitable for capturing 1280 x 720 quality iFrame H.264 video at about 40 Mbits/sec with AAC audio.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
+    } else if ([captureSession canSetSessionPreset:AVCaptureSessionPresetiFrame960x540]) {
+        [captureSession setSessionPreset:AVCaptureSessionPresetiFrame960x540];
+        
+//        A preset suitable for capturing 960 x 540 quality iFrame H.264 video at about 30 Mbits/sec with AAC audio.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
+    } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset3840x2160]) {
         [captureSession setSessionPreset:AVCaptureSessionPreset3840x2160];
-        
-        NSLog(@"B Camera: captureSessionPreset - %@", captureSession.sessionPreset);
-        
-        imageFrameWidth = 3840;
-        imageFrameHeight = 2160;
+    
+//        A preset suitable for capturing 2160p-quality (3840 x 2160 pixels) video output.
+    NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
+    
+    imageFrameWidth = 3840;
+    imageFrameHeight = 2160;
     } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset1920x1080]) {
         [captureSession setSessionPreset:AVCaptureSessionPreset1920x1080];
         
-        NSLog(@"B Camera: captureSessionPreset - %@", captureSession.sessionPreset);
+//        A preset suitable for capturing 1080p-quality (1920 x 1080 pixels) video output.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
         
         imageFrameWidth = 1920;
         imageFrameHeight = 1080;
     } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]) {
         [captureSession setSessionPreset:AVCaptureSessionPreset1280x720];
         
-        NSLog(@"B Camera: captureSessionPreset - %@", captureSession.sessionPreset);
+//        A preset sitable for capturing 720p quality (1280 x 720 pixel) video output.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
         
         imageFrameWidth = 1280;
         imageFrameHeight = 720;
     } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
         [captureSession setSessionPreset:AVCaptureSessionPreset640x480];
         
-        NSLog(@"B Camera: captureSessionPreset - %@", captureSession.sessionPreset);
+//        A preset suitable for capturing VGA quality (640 x 480 pixel) video output.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
         
         imageFrameWidth = 640;
         imageFrameHeight = 480;
     } else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset352x288]) {
         [captureSession setSessionPreset:AVCaptureSessionPreset352x288];
         
-        NSLog(@"B Camera: captureSessionPreset - %@", captureSession.sessionPreset);
+//        A preset suitable for capturing CIF quality (352 x 288 pixel) video output.
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
         
         imageFrameHeight = 352;
         imageFrameWidth = 288;
-    } else if ([captureSession canSetSessionPreset:AVCaptureSessionPresetPhoto]) {
-        [captureSession setSessionPreset:AVCaptureSessionPresetPhoto];
+    } else if ([captureSession canSetSessionPreset:AVCaptureSessionPresetInputPriority]) {
+        [captureSession setSessionPreset:AVCaptureSessionPresetInputPriority];
         
-        NSLog(@"B Camera: captureSessionPreset -  %@", captureSession.sessionPreset);
+        NSLog(@"B Camera - captureSessionPreset: %@", captureSession.sessionPreset);
     } else {
-        NSLog(@"B Camera: failed setCaptureSessionPreset");
+        NSLog(@"B Camera - failed selectSessionPreset");
     }
-    
-//    [self.captureSession commitConfiguration];
 }
 
 - (void)captureSessionStartRunning {
