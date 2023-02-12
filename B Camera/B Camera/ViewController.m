@@ -518,8 +518,11 @@ portraitEffectsMatteDeliveryMode, selectedSemanticSegmentationMatteTypes, device
         
         if (self.livePhotoMode == AVCamLivePhotoModeOn && self->photoOutput.livePhotoCaptureSupported) { // Live Photo capture is not supported in movie mode.
             NSString *livePhotoMovieFileName = [NSUUID UUID].UUIDString;
-            NSString *livePhotoMovieFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[livePhotoMovieFileName stringByAppendingPathExtension:@"mov"]];
-            photoSettings.livePhotoMovieFileURL = [NSURL fileURLWithPath:livePhotoMovieFilePath];
+            
+            // 2023. 02. 12 수정
+//            NSString *livePhotoMovieFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[livePhotoMovieFileName stringByAppendingPathExtension:@"mov"]];
+//            photoSettings.livePhotoMovieFileURL = [NSURL fileURLWithPath:livePhotoMovieFilePath];
+            photoSettings.livePhotoMovieFileURL = nil;
         }
         
         photoSettings.depthDataDeliveryEnabled = (self.depthDataDeliveryMode == AVCamDepthDataDeliveryModeOn && self.photoOutput.isDepthDataDeliveryEnabled);
@@ -645,14 +648,15 @@ portraitEffectsMatteDeliveryMode, selectedSemanticSegmentationMatteTypes, device
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
-    NSString *ediaType = [info objectForKey:UIImagePickerControllerMediaType];
-    
-    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
-    [photoBtn setImage:newImage forState:UIControlStateNormal];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//error
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+//    NSString *ediaType = [info objectForKey:UIImagePickerControllerMediaType];
+//
+//    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
+//    [photoBtn setImage:newImage forState:UIControlStateNormal];
+//
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
