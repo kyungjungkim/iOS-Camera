@@ -272,14 +272,15 @@ portraitEffectsMatteDeliveryMode, selectedSemanticSegmentationMatteTypes, device
 
 - (void)setupVideoDeviceTypes {
     if (@available(iOS 15.4, *)) {
-        deviceTypes = [NSArray arrayWithObjects:AVCaptureDeviceTypeBuiltInMicrophone, AVCaptureDeviceTypeBuiltInDualCamera, AVCaptureDeviceTypeBuiltInTripleCamera, AVCaptureDeviceTypeBuiltInDualWideCamera,
-                       AVCaptureDeviceTypeBuiltInUltraWideCamera, AVCaptureDeviceTypeBuiltInWideAngleCamera, AVCaptureDeviceTypeBuiltInTrueDepthCamera, AVCaptureDeviceTypeBuiltInTelephotoCamera,
-                       AVCaptureDeviceTypeBuiltInLiDARDepthCamera, nil];
+        deviceTypes = [NSArray arrayWithObjects:AVCaptureDeviceTypeBuiltInMicrophone, AVCaptureDeviceTypeBuiltInDualCamera, AVCaptureDeviceTypeBuiltInTripleCamera,
+                       AVCaptureDeviceTypeBuiltInDualWideCamera, AVCaptureDeviceTypeBuiltInUltraWideCamera, AVCaptureDeviceTypeBuiltInWideAngleCamera,
+                       AVCaptureDeviceTypeBuiltInTrueDepthCamera, AVCaptureDeviceTypeBuiltInTelephotoCamera, AVCaptureDeviceTypeBuiltInLiDARDepthCamera, nil];
     } else {
         // Fallback on earlier versions
         
-        deviceTypes = [NSArray arrayWithObjects:AVCaptureDeviceTypeBuiltInMicrophone, AVCaptureDeviceTypeBuiltInDualCamera, AVCaptureDeviceTypeBuiltInTripleCamera, AVCaptureDeviceTypeBuiltInDualWideCamera,
-                       AVCaptureDeviceTypeBuiltInUltraWideCamera, AVCaptureDeviceTypeBuiltInWideAngleCamera, AVCaptureDeviceTypeBuiltInTrueDepthCamera, AVCaptureDeviceTypeBuiltInTelephotoCamera, nil];
+        deviceTypes = [NSArray arrayWithObjects:AVCaptureDeviceTypeBuiltInMicrophone, AVCaptureDeviceTypeBuiltInDualCamera, AVCaptureDeviceTypeBuiltInTripleCamera,
+                       AVCaptureDeviceTypeBuiltInDualWideCamera, AVCaptureDeviceTypeBuiltInUltraWideCamera, AVCaptureDeviceTypeBuiltInWideAngleCamera,
+                       AVCaptureDeviceTypeBuiltInTrueDepthCamera, AVCaptureDeviceTypeBuiltInTelephotoCamera, nil];
     }
 }
 
