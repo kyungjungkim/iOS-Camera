@@ -9,7 +9,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "AVCamPhotoCaptureDelegate.h"
-#import "GalleryViewController.h"
+#import <Photos/Photos.h>
 
 
 

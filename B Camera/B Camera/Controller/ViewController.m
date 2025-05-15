@@ -95,8 +95,8 @@ depthDataDeliveryMode, portraitEffectsMatteDeliveryMode, selectedSemanticSegment
 }
 
 - (PHFetchResult *)requestPHFetchResult {
-    PHFetchResult<PHAssetCollection *> *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary
-                                                                                             options:NULL];
+    PHFetchResult<PHAssetCollection *> *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
+                                                                                              subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:NULL];
     PHAssetCollection *cameraRollCollection = [cameraRoll firstObject];
     
     PHFetchOptions *fetchOptions = [PHFetchOptions new];
@@ -120,34 +120,46 @@ depthDataDeliveryMode, portraitEffectsMatteDeliveryMode, selectedSemanticSegment
 }
 
 - (void)checkPhotoPermission {
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        switch (status) {
-            case PHAuthorizationStatusAuthorized: {
-                self->checkResult = AVCamSetupResultSuccess;
-                
-                [self requestPhoto];
-                [self configureSession];
-                
-                break;
-            }
-            case PHAuthorizationStatusNotDetermined: {
-                self->checkResult = AVCamSetupResultCameraNotAuthorized;
-                break;
-            }
-            case PHAuthorizationStatusRestricted: {
-                self->checkResult = AVCamSetupResultSuccess;
-                break;
-            }
-            case PHAuthorizationStatusDenied: {
-                self->checkResult = AVCamSetupResultCameraNotAuthorized;
-                break;
-            }
-            case PHAuthorizationStatusLimited: {
-                self->checkResult = AVCamSetupResultSuccess;
-                break;
-            }
+//    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    switch (status) {
+        case PHAuthorizationStatusRestricted: {
+            self->checkResult = AVCamSetupResultSuccess;
+            break;
         }
-    }];
+        case PHAuthorizationStatusAuthorized: {
+            self->checkResult = AVCamSetupResultSuccess;
+            
+            [self requestPhoto];
+            [self configureSession];
+            
+            break;
+        }
+        case PHAuthorizationStatusNotDetermined: {
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                if (status == PHAuthorizationStatusAuthorized) {
+                    self->checkResult = AVCamSetupResultSuccess;
+                    
+                    [self requestPhoto];
+                    [self configureSession];
+                }
+                else {
+                    self->checkResult = AVCamSetupResultCameraNotAuthorized;
+                }
+            }];
+            
+            break;
+        }
+        case PHAuthorizationStatusDenied: {
+            self->checkResult = AVCamSetupResultCameraNotAuthorized;
+            break;
+        }
+        case PHAuthorizationStatusLimited: {
+            self->checkResult = AVCamSetupResultSuccess;
+            break;
+        }
+    }
+//    }];
 }
 
 - (BOOL)configureSession {
@@ -518,7 +530,7 @@ depthDataDeliveryMode, portraitEffectsMatteDeliveryMode, selectedSemanticSegment
         }
         
         if (self.livePhotoMode == AVCamLivePhotoModeOn && self->photoOutput.livePhotoCaptureSupported) { // Live Photo capture is not supported in movie mode.
-            NSString *livePhotoMovieFileName = [NSUUID UUID].UUIDString;
+//            NSString *livePhotoMovieFileName = [NSUUID UUID].UUIDString;
             
             // 2023. 02. 12 수정
 //            NSString *livePhotoMovieFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[livePhotoMovieFileName stringByAppendingPathExtension:@"mov"]];
@@ -642,22 +654,23 @@ depthDataDeliveryMode, portraitEffectsMatteDeliveryMode, selectedSemanticSegment
 
 #pragma mark - UIImagePickerControllerDelegate
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
-    UIImage *newImage = [image imageByPreparingThumbnailOfSize:CGSizeMake(photoBtn.frame.size.width, photoBtn.frame.size.height)];
-    [photoBtn setImage:newImage forState:UIControlStateNormal];
-    
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-//error
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
-//    NSString *ediaType = [info objectForKey:UIImagePickerControllerMediaType];
-//
-//    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
+//    UIImage *newImage = [image imageByPreparingThumbnailOfSize:CGSizeMake(photoBtn.frame.size.width, photoBtn.frame.size.height)];
 //    [photoBtn setImage:newImage forState:UIControlStateNormal];
-//
-//    [self dismissViewControllerAnimated:YES completion:nil];
+//    
+//    [self dismissViewControllerAnimated:YES completion:NULL];
 //}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+//    NSString *ediaType = [info objectForKey:UIImagePickerControllerMediaType];
+
+    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
+    newImage = [self imageWithImage:newImage convertToSize:CGSizeMake(55.0f, 55.0f)];
+    [photoBtn setImage:newImage forState:UIControlStateNormal];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];

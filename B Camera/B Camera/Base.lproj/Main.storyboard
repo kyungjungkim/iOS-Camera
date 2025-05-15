@@ -66,7 +66,7 @@
                                             <constraint firstAttribute="width" constant="56" id="Sc9-Y0-Ea3"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="camera.rotate" catalog="system">
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.trianglehead.2.clockwise.rotate.90.camera" catalog="system">
                                             <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -114,63 +114,6 @@
             </objects>
             <point key="canvasLocation" x="933.58778625954199" y="3.5211267605633805"/>
         </scene>
-        <!--Photo View Controller-->
-        <scene sceneID="qTo-zL-aKJ">
-            <objects>
-                <viewController id="i8F-44-wBR" customClass="PhotoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="D7N-eI-C1t">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW1-ea-36r">
-                                <rect key="frame" x="0.0" y="138" width="440" height="35"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bho-DN-Gvm">
-                                        <rect key="frame" x="-1" y="3" width="52" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="23" id="6gc-Q9-Hg6"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system">
-                                            <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="backBtn:" destination="i8F-44-wBR" eventType="touchUpInside" id="NPI-8L-qvl"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bho-DN-Gvm" secondAttribute="trailing" constant="20" symbolic="YES" id="4GH-D0-M4z"/>
-                                    <constraint firstItem="bho-DN-Gvm" firstAttribute="top" secondItem="gW1-ea-36r" secondAttribute="top" constant="6" id="NW8-E7-9U9"/>
-                                    <constraint firstItem="bho-DN-Gvm" firstAttribute="leading" secondItem="gW1-ea-36r" secondAttribute="leading" id="cH6-pT-p4v"/>
-                                    <constraint firstItem="bho-DN-Gvm" firstAttribute="centerY" secondItem="gW1-ea-36r" secondAttribute="centerY" id="vEr-IY-VvF"/>
-                                </constraints>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m2P-Tv-SK4">
-                                <rect key="frame" x="0.0" y="172" width="439" height="607"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="itx-xd-y2f"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="itx-xd-y2f" firstAttribute="bottom" secondItem="m2P-Tv-SK4" secondAttribute="bottom" constant="109" id="BGI-Q0-kYB"/>
-                            <constraint firstItem="gW1-ea-36r" firstAttribute="top" secondItem="itx-xd-y2f" secondAttribute="top" constant="14" id="Dk1-KE-Jjg"/>
-                            <constraint firstItem="gW1-ea-36r" firstAttribute="leading" secondItem="m2P-Tv-SK4" secondAttribute="leading" id="P9x-vv-9u5"/>
-                            <constraint firstItem="gW1-ea-36r" firstAttribute="leading" secondItem="D7N-eI-C1t" secondAttribute="leading" id="hba-vY-zwI"/>
-                            <constraint firstItem="gW1-ea-36r" firstAttribute="centerX" secondItem="D7N-eI-C1t" secondAttribute="centerX" id="noo-17-V07"/>
-                            <constraint firstItem="gW1-ea-36r" firstAttribute="trailing" secondItem="m2P-Tv-SK4" secondAttribute="trailing" constant="1" id="obI-UB-XNJ"/>
-                            <constraint firstItem="m2P-Tv-SK4" firstAttribute="top" secondItem="gW1-ea-36r" secondAttribute="bottom" constant="-1" id="yPK-Nq-DDB"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="photoImageView" destination="m2P-Tv-SK4" id="Qlx-UW-mtv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XeG-B0-ABE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1722.9007633587785" y="3.5211267605633805"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="c01-MY-hvx">
             <objects>
@@ -192,8 +135,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="camera.rotate" catalog="system" width="128" height="93"/>
+        <image name="arrow.trianglehead.2.clockwise.rotate.90.camera" catalog="system" width="128" height="93"/>
         <image name="click" width="70" height="70"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
